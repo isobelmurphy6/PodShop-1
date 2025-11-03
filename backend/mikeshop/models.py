@@ -14,6 +14,7 @@ class Product(models.Model):
     product_image = models.FileField(upload_to='products') 
 
 # Create your models here.
+# testing for colab
 class Basket(models.Model):
     id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
