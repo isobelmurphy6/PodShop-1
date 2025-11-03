@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Order complete{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4">
+  <h1 class="h3 fw-semibold">Thank you for your order</h1>
+  <p class="ps-muted">A confirmation has been recorded below.</p>
+</div>
+
+<div class="table-responsive mb-4">
+  <table class="table ps-table align-middle">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th style="width:160px">Image</th>
+        <th class="text-center">Qty</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in sbi %}
+      <tr>
+        <td>
+          <div class="fw-semibold">{{ item.product_id.name }}</div>
+          <div class="ps-muted small">{{ item.product_id.description|truncatechars:120 }}</div>
+        </td>
+        <td><img src="{{ item.product_id.product_image.url }}" alt="{{ item.product_id.name }}" class="img-fluid rounded" style="max-height:120px; object-fit:cover;"></td>
+        <td class="text-center">{{ item.quantity }}</td>
+        <td>€{{ item.item_price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="ps-card p-4">
+  <div class="row g-3">
+    <div class="col-md-8">
+      <div class="fw-semibold">Ship to</div>
+      <div class="ps-muted">{{ order.shipping_addr }}</div>
+    </div>
+    <div class="col-md-4 text-md-end">
+      <div class="fw-semibold">Total</div>
+      <div class="display-6">€{{ order.total_price }}</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
