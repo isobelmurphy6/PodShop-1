@@ -15,8 +15,7 @@ class UserSignupForm(UserCreationForm):
         return user
     # test.
     #test2
-    #test 3 
-    
+
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
