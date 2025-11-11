@@ -32,7 +32,18 @@ class Order(models.Model):
     basket_id = models.ForeignKey(Basket, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     total_price = models.DecimalField(max_digits=6, decimal_places=2, default=0.0)
-    shipping_addr = models.TextField(default="")
+    first_name = models.CharField(max_length=100, default="")
+    last_name = models.CharField(max_length=100, default="")
+    email = models.EmailField(default="")
+    phone = models.CharField(max_length=20, default="")
+    address1 = models.CharField("Address line 1", max_length=100, default="")
+    address2 = models.CharField("Address line 2", max_length=100, default="")
+    city = models.CharField(max_length=100, default="")
+    eircode = models.CharField(max_length=10, default="")
+    payment_method = models.CharField(max_length=50, default="")
+
+    def __str__(self):
+        return f"Order {self.id}"
 
 class Feedback(models.Model):
     customer_name = models.CharField(max_length=100)
