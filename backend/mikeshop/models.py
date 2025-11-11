@@ -13,8 +13,6 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.0)
     product_image = models.FileField(upload_to='products') 
 
-# Create your models here.
-# testing for colab
 class Basket(models.Model):
     id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
